@@ -14,11 +14,11 @@ class DirectorsController < ApplicationController
   end
 
   def create_row
+    @director = Director.new
     dob = params[:dob]
     name = params[:name]
     bio = params[:bio]
     image_url = params[:image_url]
-    @director = Director.new
     @director.dob = dob
     @director.name = name
     @director.bio = bio
@@ -46,7 +46,7 @@ class DirectorsController < ApplicationController
     @director.bio = bio
     @director.image_url = image_url
     @director.save
-    render("directors/show_details.html.erb")
+    render("show_details")
   end
 
   def destroy

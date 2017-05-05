@@ -35,7 +35,6 @@ class DirectorsController < ApplicationController
   def update_row
 
     dob = params[:dob]
-
     name = params[:name]
     bio = params[:bio]
     image_url = params[:image_url]

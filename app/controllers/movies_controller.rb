@@ -10,23 +10,25 @@ class MoviesController < ApplicationController
   end
 
   def new_form
+    render("movies/new_form.html.erb")
+
   end
 
   def create_row
+    @movie = Movie.new
     title = params[:title]
     year = params[:year]
     duration = params[:duration]
     description = params[:description]
     image_url = params[:image_url]
     director_id = params[:director_id]
-    @movie = Movie.new
-      @movie.title = title
-      @movie.year = year
-      @movie.duration = duration
-      @movie.description = description
-      @movie.image_url = image_url
-      @movie.director_id = director_id
-      @movie.save
+    @movie.title = title
+    @movie.year = year
+    @movie.duration = duration
+    @movie.description = description
+    @movie.image_url = image_url
+    @movie.director_id = director_id
+    @movie.save
     render("show")
   end
 
@@ -42,16 +44,15 @@ class MoviesController < ApplicationController
     description = params[:description]
     image_url = params[:image_url]
     director_id = params[:director_id]
-      @movie = Movie.find(the_id)
-      @movie.title = title
-      @movie.year = year
-      @movie.duration = duration
-      @movie.description = description
-      @movie.image_url = image_url
-      @movie.director_id = director_id
-      @movie.save
-
-    redirect_to("/movies/#{update_movie.id}")
+    @movie = Movie.find(the_id)
+    @movie.title = title
+    @movie.year = year
+    @movie.duration = duration
+    @movie.description = description
+    @movie.image_url = image_url
+    @movie.director_id = director_id
+    @movie.save
+    render("show")
   end
 
   def destroy
